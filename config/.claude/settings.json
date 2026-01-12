@@ -1,4 +1,8 @@
 {
   "language": "日本語",
-  "model": "opus"
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "echo \"$(ccusage blocks --today --raw) | $(git branch --show-current 2>/dev/null || echo '-')\""
+  }
 }
