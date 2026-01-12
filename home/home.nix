@@ -30,6 +30,8 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) 
     delta
     # Git TUI
     lazygit
+    # Runtime
+    bun
   ]) ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
     ccusage
     codex

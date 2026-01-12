@@ -2,7 +2,8 @@
   "language": "日本語",
   "model": "opus",
   "statusLine": {
-    "type": "command",
-    "command": "echo \"$(ccusage blocks --today --raw) | $(git branch --show-current 2>/dev/null || echo '-')\""
-  }
+		"type": "command",
+		"command": "bun x ccusage statusline --no-offline", // Fetches latest pricing from API
+		"padding": 0
+	}
 }
