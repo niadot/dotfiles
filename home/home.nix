@@ -12,6 +12,7 @@ in
 nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [ "claude" ];
 
   home.packages = (with pkgs; [
+    bash
     git
     gh
     ghq
@@ -34,6 +35,7 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) 
   ]);
 
   home.file = {
+    ".bashrc".source = oos "${repoRoot}/config/.bashrc";
     ".config/git/config".source = oos "${repoRoot}/config/.config/git/config";
     ".claude/settings.json".source = oos "${repoRoot}/config/.claude/settings.json";
     ".claude/skills".source = oos "${repoRoot}/config/.claude/skills";
