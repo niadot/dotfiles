@@ -2,8 +2,11 @@
   "language": "日本語",
   "model": "opus",
   "statusLine": {
-		"type": "command",
-		"command": "bun x ccusage statusline --no-offline", // Fetches latest pricing from API
-		"padding": 0
-	}
+    "type": "command",
+    "command": "bun x ccusage statusline",
+    "padding": 0
+  },
+  "permissions": {
+    "additionalDirectories": ["/home/nia"]
+  }
 }
