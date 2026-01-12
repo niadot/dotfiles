@@ -23,10 +23,10 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ```bash
 git clone https://github.com/niadot/dotfiles.git ~/ghq/github.com/niadot/dotfiles
 cd ~/ghq/github.com/niadot/dotfiles/home
-nix run home-manager -- switch --flake .
+nix run home-manager -- switch -b backup --flake .
 ```
 
 ## 使い方
 
-- 設定変更後: `home-manager switch`
+- 設定変更後: `home-manager switch -b backup`
 - 依存更新: `nix flake update --flake home`

@@ -17,6 +17,9 @@ Nix Home Managerを使った個人用dotfiles管理リポジトリ。設定フ�
 # 設定の適用
 home-manager switch
 
+# 設定の確認（ドライラン）
+home-manager build
+
 # フレーク依存関係の更新
 nix flake update --flake home
 ```
@@ -43,4 +46,9 @@ nix flake update --flake home
 ## 注意事項
 
 - 認証情報は`*.credentials.json`または`*.local.json`として保存（.gitignoreで除外）
-- 各サブディレクトリに専用のCLAUDE.mdがある場合、そちらに詳細情報がある
+
+## 設定ファイルの追加フロー
+
+1. `config/`に設定ファイルを配置
+2. `home/home.nix`の`home.file`に`mkOutOfStoreSymlink`でリンクを追加
+3. `home-manager switch`で反映

@@ -1,0 +1,5 @@
+[projects."/home/nia"]
+trust_level = "trusted"
+
+[projects."/home/nia/ghq/github.com/niadot/dotfiles"]
+trust_level = "trusted"

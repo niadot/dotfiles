@@ -30,7 +30,7 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) 
     delta
     # Git TUI
     lazygit
-  ]) ++ (with inputs.llm-agents.packages.${pkgs.system}; [
+  ]) ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
     ccusage
     codex
   ]);
@@ -41,6 +41,8 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) 
     ".claude/settings.json".source = oos "${repoRoot}/config/.claude/settings.json";
     ".claude/skills".source = oos "${repoRoot}/config/.claude/skills";
     ".claude/agents".source = oos "${repoRoot}/config/.claude/agents";
+    ".codex/config.toml".source = oos "${repoRoot}/config/.codex/config.toml";
+    ".codex/skills".source = oos "${repoRoot}/config/.codex/skills";
   };
 
   home.sessionVariables = {
