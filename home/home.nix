@@ -17,6 +17,18 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) 
     ghq
     neovim
     tree
+    # 検索・ファイル操作
+    ripgrep
+    fd
+    fzf
+    jq
+    curl
+    # 表示改善
+    bat
+    eza
+    delta
+    # Git TUI
+    lazygit
   ]) ++ (with inputs.llm-agents.packages.${pkgs.system}; [
     # 将来用。。。あとあと使うかも
   ]);
