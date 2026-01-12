@@ -21,6 +21,25 @@ home-manager switch
 nix flake update --flake home
 ```
 
+## 管理パッケージ
+
+| カテゴリ | パッケージ |
+|---------|-----------|
+| シェル | bash |
+| Git | git, gh, ghq, lazygit, delta |
+| エディタ | neovim |
+| 検索 | ripgrep, fd, fzf |
+| ユーティリティ | tree, jq, curl, bat, eza |
+| 開発環境 | direnv |
+
+## 管理設定ファイル
+
+| ファイル | 管理方法 |
+|---------|---------|
+| `.bashrc` | mkOutOfStoreSymlink |
+| `.config/git/config` | mkOutOfStoreSymlink |
+| `.claude/*` | mkOutOfStoreSymlink |
+
 ## 注意事項
 
 - 認証情報は`*.credentials.json`または`*.local.json`として保存（.gitignoreで除外）
