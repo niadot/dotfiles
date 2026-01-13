@@ -14,7 +14,6 @@
   };
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -42,14 +41,7 @@
 
         # 追記分 引数を渡す(llm-agents用)
         extraSpecialArgs = { inherit inputs; };
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [
-          ./home.nix
-          ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+        modules = [ ./home.nix ];
       };
     };
 }
