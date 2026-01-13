@@ -30,7 +30,11 @@
     { nixpkgs, home-manager, claude-code-overlay, llm-agents, ... }@inputs:
     let
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "claude" ];
+        overlays = [ claude-code-overlay.overlays.default ];
+      };
     in
     {
       homeConfigurations."nia" = home-manager.lib.homeManagerConfiguration {
@@ -41,7 +45,6 @@
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
         modules = [
-          claude-code-overlay.homeManagerModules.default
           ./home.nix
           ];
 

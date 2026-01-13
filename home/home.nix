@@ -9,8 +9,6 @@ in
   home.homeDirectory = "/home/nia";
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
-nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) [ "claude" ];
-
   home.packages = (with pkgs; [
     bash
     git
@@ -53,7 +51,10 @@ nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (pkgs.lib.getName pkg) 
 
   programs.home-manager.enable = true;
   
-  programs.claude-code.enable = true;
+  programs.claude-code = {
+    enable = true;
+    package = pkgs.claude-code;
+  };
 
   programs.direnv = {
     enable = true;
