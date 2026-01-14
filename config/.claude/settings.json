@@ -1,9 +1,8 @@
 {
-  "language": "日本語",
-  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "bun x ccusage statusline",
     "padding": 0
-  }
+  },
+  "language": "日本語"
 }
