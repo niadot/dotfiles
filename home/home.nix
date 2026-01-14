@@ -10,27 +10,31 @@ in
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
   home.packages = (with pkgs; [
+    # シェル
     bash
+    # エディタ
+    neovim
+    # Git
     git
     gh
     ghq
-    neovim
-    tree
+    lazygit
+    delta
     # 検索・ファイル操作
     ripgrep
     fd
     fzf
+    tree
+    # ユーティリティ
     jq
     curl
-    # 表示改善
     bat
     eza
-    delta
-    # Git TUI
-    lazygit
-    # Runtime
+    # 開発環境
+    devenv
     bun
   ]) ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+    # LLM エージェント
     ccusage
     codex
   ]);
