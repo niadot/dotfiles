@@ -37,6 +37,7 @@ in
     # LLM エージェント
     ccusage
     codex
+    opencode
   ]);
 
   home.file = {
