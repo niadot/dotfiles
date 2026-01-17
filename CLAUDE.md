@@ -21,7 +21,8 @@ home-manager switch
 home-manager build
 
 # フレーク依存関係の更新
-nix flake update --flake home
+cd ~/.config/home-manager && nix flake update
+# または: nix flake update --flake home (リポジトリルートから)
 ```
 
 ## 管理パッケージ
