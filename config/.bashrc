@@ -122,3 +122,4 @@ fi
 
 # fzf - Ctrl+R: history, Ctrl+T: file, Alt+C: cd
 eval "$(fzf --bash)"
+
