@@ -18,11 +18,41 @@ home-manager build               # ドライラン
 nix flake update                 # 依存関係を更新（home/で実行）
 ```
 
-## 設定ファイルの追加方法
+## home.nix の構造
 
+```nix
+# パッケージ追加
+home.packages = (with pkgs; [
+  パッケージ名
+]) ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
+  # llm-agents flakeからのパッケージ
+]);
+
+# シンボリックリンク追加
+home.file = {
+  ".config/app/config".source = oos "${repoRoot}/config/.config/app/config";
+};
+
+# プログラム設定
+programs.アプリ名 = {
+  enable = true;
+};
+```
+
+## よくある作業パターン
+
+### パッケージを追加する
+1. `home/home.nix` の `home.packages` にパッケージ名を追加
+2. `home-manager switch` で適用
+
+### 設定ファイルを追加する
 1. `config/` に設定ファイルを配置
-2. `home/home.nix` の `home.file` に `mkOutOfStoreSymlink` でリンクを追加
-3. `home-manager switch` で反映
+2. `home/home.nix` の `home.file` に `oos` でリンクを追加
+3. `home-manager switch` で適用
+
+### 依存関係を更新する
+1. `cd home && nix flake update`
+2. `home-manager switch` で適用
 
 ## 管理している設定ファイル
 
@@ -44,3 +74,4 @@ nix flake update                 # 依存関係を更新（home/で実行）
 
 - 認証情報は `*.credentials.json` または `*.local.json` として保存（.gitignore で除外済み）
 - 詳細なセットアップ手順は [docs/setup.md](docs/setup.md) を参照
+- Home Manager の詳細な操作は [home/CLAUDE.md](home/CLAUDE.md) を参照
