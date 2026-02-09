@@ -13,9 +13,11 @@ docs/       ドキュメント
 ## よく使うコマンド
 
 ```bash
-home-manager switch              # 設定を適用
+nix run ./home#setup             # 初回セットアップ
+nix run ./home#update            # 依存関係の更新＋設定適用
+nix run ./home#cleanup           # 古い世代の削除＋ガベージコレクション
+home-manager switch              # 設定のみ適用
 home-manager build               # ドライラン
-nix flake update                 # 依存関係を更新（home/で実行）
 ```
 
 ## home.nix の構造
@@ -51,8 +53,7 @@ programs.アプリ名 = {
 3. `home-manager switch` で適用
 
 ### 依存関係を更新する
-1. `cd home && nix flake update`
-2. `home-manager switch` で適用
+1. `nix run ./home#update` で更新＋適用
 
 ## 管理している設定ファイル
 

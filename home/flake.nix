@@ -29,6 +29,8 @@
     { nixpkgs, home-manager, claude-code-overlay, llm-agents, ... }@inputs:
     let
       system = "x86_64-linux";
+      githubUsername = "niadot";
+      flakePath = "$HOME/ghq/github.com/${githubUsername}/dotfiles/home";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "claude" ];
@@ -36,6 +38,32 @@
       };
     in
     {
+      apps.${system} = {
+        setup = {
+          type = "app";
+          program = toString (pkgs.writeShellScript "hm-setup" ''
+            set -e
+            nix run home-manager -- switch --flake "${flakePath}"
+          '');
+        };
+        update = {
+          type = "app";
+          program = toString (pkgs.writeShellScript "hm-update" ''
+            set -e
+            nix flake update --flake "${flakePath}"
+            home-manager switch --flake "${flakePath}"
+          '');
+        };
+        cleanup = {
+          type = "app";
+          program = toString (pkgs.writeShellScript "hm-cleanup" ''
+            set -e
+            home-manager expire-generations "-0 days"
+            nix-collect-garbage
+          '');
+        };
+      };
+
       homeConfigurations."nia" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 

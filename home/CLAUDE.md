@@ -31,6 +31,16 @@ llm-agents.nix 用のバイナリキャッシュを設定。
 
 claude パッケージのみ unfree を許可。
 
+### apps（セットアップ・更新コマンド）
+
+`nix run` で実行できるコマンドを定義。
+
+| app | 説明 |
+|-----|------|
+| setup | 初回セットアップ用。`nix run home-manager` 経由で `home-manager switch` を実行 |
+| update | `nix flake update` + `home-manager switch` を一括実行 |
+| cleanup | 現行以外の全世代を削除 + `nix-collect-garbage` を実行 |
+
 ## home.nix の構造
 
 ### シンボリックリンク
@@ -58,14 +68,20 @@ readlink -f ~/.config/git/config
 ## よく使うコマンド
 
 ```bash
-# 設定の適用
+# 初回セットアップ（home-manager未インストール時）
+nix run .#setup
+
+# 依存関係の更新＋設定適用
+nix run .#update
+
+# 古い世代の削除＋ガベージコレクション
+nix run .#cleanup
+
+# 設定のみ適用
 home-manager switch
 
 # 設定の確認（ドライラン）
 home-manager build
-
-# フレーク依存関係の更新
-nix flake update
 
 # 特定のインプットのみ更新
 nix flake lock --update-input nixpkgs

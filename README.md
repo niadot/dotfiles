@@ -13,8 +13,9 @@ Nix Home Manager を使った個人用 dotfiles。
 
 ```bash
 git clone https://github.com/niadot/dotfiles.git ~/ghq/github.com/niadot/dotfiles
-cd ~/ghq/github.com/niadot/dotfiles/home
-nix run home-manager -- switch -b backup --flake .
+ln -s ~/ghq/github.com/niadot/dotfiles/home ~/.config/home-manager
+cd ~/ghq/github.com/niadot/dotfiles
+nix run ./home#setup
 exec $SHELL -l
 ```
 
@@ -43,9 +44,9 @@ dotfiles/
 
 | 操作 | コマンド |
 |------|---------|
-| 設定を適用 | `home-manager switch` |
-| 依存関係を更新 | `nix flake update --flake home` |
-| 古い世代を削除 | `nix-collect-garbage -d` |
+| 依存関係の更新＋設定適用 | `nix run ./home#update` |
+| 設定のみ適用 | `home-manager switch` |
+| 古い世代を削除 | `nix run ./home#cleanup` |
 
 ## ドキュメント
 
