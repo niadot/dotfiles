@@ -68,7 +68,7 @@ programs.アプリ名 = {
 **エディタ**: neovim
 **検索**: ripgrep, fd, fzf
 **ユーティリティ**: tree, jq, curl, bat, eza
-**開発環境**: direnv（nix-direnv有効）, devenv, bun
+**開発環境**: direnv（nix-direnv有効）, devenv, nodejs_24, pnpm, bun
 **LLMエージェント**: claude-code, opencode, codex, ccusage
 
 ## 注意事項

@@ -32,6 +32,8 @@ in
     eza
     # 開発環境
     devenv
+    nodejs_latest
+    pnpm
     bun
   ]) ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
     # LLM エージェント
@@ -41,13 +43,17 @@ in
   ]);
 
   home.file = {
+    # シェル
     ".bashrc".source = oos "${repoRoot}/config/.bashrc";
+    # Git
     ".config/git/config".source = oos "${repoRoot}/config/.config/git/config";
+    # エージェント共通
+    ".agents/skills".source = oos "${repoRoot}/config/.agents/skills";
+    # Claude Code
     ".claude/settings.json".source = oos "${repoRoot}/config/.claude/settings.json";
-    ".claude/skills".source = oos "${repoRoot}/config/.claude/skills";
-    ".claude/agents".source = oos "${repoRoot}/config/.claude/agents";
+    ".claude/skills".source = oos "${repoRoot}/config/.agents/skills";
+    # Codex
     ".codex/config.toml".source = oos "${repoRoot}/config/.codex/config.toml";
-    ".codex/skills".source = oos "${repoRoot}/config/.codex/skills";
   };
 
   home.sessionVariables = {
