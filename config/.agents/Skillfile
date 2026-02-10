@@ -1,0 +1,7 @@
+# Agent Skills インストールリスト
+# 1行1スキル、owner/repo@skill 形式
+vercel-labs/skills@find-skills
+anthropics/skills@skill-creator
+wshobson/agents@code-review-excellence
+vercel-labs/agent-skills@vercel-react-best-practices
+vercel-labs/next-skills@next-best-practices

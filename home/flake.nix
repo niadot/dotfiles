@@ -31,6 +31,7 @@
       system = "x86_64-linux";
       githubUsername = "niadot";
       flakePath = "$HOME/ghq/github.com/${githubUsername}/dotfiles/home";
+      repoRoot = "$HOME/ghq/github.com/${githubUsername}/dotfiles";
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "claude" ];
@@ -52,6 +53,12 @@
             set -e
             nix flake update --flake "${flakePath}"
             home-manager switch --flake "${flakePath}"
+          '');
+        };
+        skills = {
+          type = "app";
+          program = toString (pkgs.writeShellScript "hm-skills" ''
+            bash "${repoRoot}/home/scripts/install-skills.sh" "${repoRoot}/config/.agents/Skillfile"
           '');
         };
         cleanup = {
