@@ -1,11 +1,10 @@
 # CLAUDE.md - Home Manager設定
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this directory.
-
 ## ファイル構成
 
 - **flake.nix**: Nixフレーク定義。依存関係（nixpkgs, home-manager, claude-code-overlay等）を管理
 - **home.nix**: Home Manager設定本体。パッケージ、シンボリックリンク、プログラム設定を定義
+- **scripts/install-skills.sh**: Skillfile に基づくエージェントスキルのインストールスクリプト
 
 ## flake.nix の構造
 
@@ -39,6 +38,7 @@ claude パッケージのみ unfree を許可。
 |-----|------|
 | setup | 初回セットアップ用。`nix run home-manager` 経由で `home-manager switch` を実行 |
 | update | `nix flake update` + `home-manager switch` を一括実行 |
+| skills | Skillfile に基づくエージェントスキルのインストール |
 | cleanup | 現行以外の全世代を削除 + `nix-collect-garbage` を実行 |
 
 ## home.nix の構造
@@ -73,6 +73,9 @@ nix run .#setup
 
 # 依存関係の更新＋設定適用
 nix run .#update
+
+# エージェントスキルのインストール
+nix run .#skills
 
 # 古い世代の削除＋ガベージコレクション
 nix run .#cleanup
