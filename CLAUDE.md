@@ -5,9 +5,11 @@ Nix Home Managerを使った個人用dotfiles管理リポジトリ。
 ## ディレクトリ構造
 
 ```
-home/       Home Manager設定（flake.nix, home.nix）
-config/     設定ファイル（ホームディレクトリにシンボリックリンク）
-docs/       ドキュメント
+home/              Home Manager設定（flake.nix, home.nix）
+home/scripts/      セットアップスクリプト（install-skills.sh）
+config/            設定ファイル（ホームディレクトリにシンボリックリンク）
+config/.agents/    エージェントスキル共通ディレクトリ（Skillfile, skills/）
+docs/              ドキュメント
 ```
 
 ## よく使うコマンド
@@ -15,6 +17,7 @@ docs/       ドキュメント
 ```bash
 nix run ./home#setup             # 初回セットアップ
 nix run ./home#update            # 依存関係の更新＋設定適用
+nix run ./home#skills            # Skillfile に基づくスキルインストール
 nix run ./home#cleanup           # 古い世代の削除＋ガベージコレクション
 home-manager switch              # 設定のみ適用
 home-manager build               # ドライラン
@@ -59,8 +62,9 @@ programs.アプリ名 = {
 
 - `.bashrc`
 - `.config/git/config`
-- `.claude/settings.json`, `.claude/skills`, `.claude/agents`
-- `.codex/config.toml`, `.codex/skills`
+- `.agents/skills` — エージェントスキル共通ディレクトリ（Skillfile で宣言的に管理）
+- `.claude/settings.json`, `.claude/skills`（→ `.agents/skills` と同じ実体）
+- `.codex/config.toml`
 
 ## インストール済みパッケージ
 
@@ -68,7 +72,7 @@ programs.アプリ名 = {
 **エディタ**: neovim
 **検索**: ripgrep, fd, fzf
 **ユーティリティ**: tree, jq, curl, bat, eza
-**開発環境**: direnv（nix-direnv有効）, devenv, nodejs_24, pnpm, bun
+**開発環境**: direnv（nix-direnv有効）, devenv, nodejs_latest, pnpm, bun
 **LLMエージェント**: claude-code, opencode, codex, ccusage
 
 ## 注意事項
