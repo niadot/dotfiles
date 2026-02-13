@@ -25,6 +25,9 @@ in
     fd
     fzf
     tree
+    # ターミナルマルチプレクサ
+    tmux
+    zellij
     # ユーティリティ
     jq
     curl
@@ -54,6 +57,8 @@ in
     ".claude/skills".source = oos "${repoRoot}/config/.agents/skills";
     # Codex
     ".codex/config.toml".source = oos "${repoRoot}/config/.codex/config.toml";
+    # tmux
+    ".config/tmux/tmux.conf".source = oos "${repoRoot}/config/.config/tmux/tmux.conf";
   };
 
   home.sessionVariables = {
