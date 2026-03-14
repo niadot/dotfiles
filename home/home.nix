@@ -35,7 +35,7 @@ in
     eza
     # 開発環境
     devenv
-    nodejs_latest
+    nodejs
     pnpm
     bun
   ]) ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [

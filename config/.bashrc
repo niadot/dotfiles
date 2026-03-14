@@ -125,3 +125,6 @@ eval "$(fzf --bash)"
 
 # direnv
 eval "$(direnv hook bash)"
+
+# opencode
+export OPENCODE_ENABLE_EXA=1
