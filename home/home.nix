@@ -38,6 +38,15 @@ in
     nodejs
     pnpm
     bun
+    # Go
+    go
+    gopls
+    delve
+    golangci-lint
+    gofumpt
+    gomodifytags
+    impl
+    gotests
   ]) ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
     # LLM エージェント
     ccusage

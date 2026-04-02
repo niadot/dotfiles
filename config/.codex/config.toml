@@ -1,6 +1,7 @@
 model = "gpt-5.4"
-model_reasoning_effort = "medium"
+model_reasoning_effort = "high"
 personality = "pragmatic"
+service_tier = "fast"
 
 [sandbox_workspace_write]
 network_access = true 
@@ -17,3 +18,9 @@ trust_level = "trusted"
 [notice.model_migrations]
 "gpt-5.2-codex" = "gpt-5.3-codex"
 "gpt-5.3-codex" = "gpt-5.4"
+
+[tui]
+status_line = ["model-with-reasoning", "context-remaining", "current-dir"]
+
+[plugins."github@openai-curated"]
+enabled = true

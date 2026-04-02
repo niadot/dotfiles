@@ -19,14 +19,14 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Claude Code Overlayを追記
-    claude-code-overlay.url = "github:ryoppippi/claude-code-overlay";
+    # nix-claude-codeを追記
+    nix-claude-code.url = "github:ryoppippi/nix-claude-code";
     # llm-agents.nixを追記
     llm-agents.url = "github:numtide/llm-agents.nix";
   };
 
   outputs =
-    { nixpkgs, home-manager, claude-code-overlay, llm-agents, ... }@inputs:
+    { nixpkgs, home-manager, nix-claude-code, llm-agents, ... }@inputs:
     let
       system = "x86_64-linux";
       githubUsername = "niadot";
@@ -35,7 +35,7 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [ "claude" ];
-        overlays = [ claude-code-overlay.overlays.default ];
+        overlays = [ nix-claude-code.overlays.default ];
       };
     in
     {

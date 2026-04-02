@@ -128,3 +128,5 @@ eval "$(direnv hook bash)"
 
 # opencode
 export OPENCODE_ENABLE_EXA=1
+# Vite+ bin (https://viteplus.dev)
+. "$HOME/.vite-plus/env"
