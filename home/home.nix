@@ -49,7 +49,6 @@ in
     gotests
   ]) ++ (with inputs.llm-agents.packages.${pkgs.stdenv.hostPlatform.system}; [
     # LLM エージェント
-    ccusage
     codex
     opencode
   ]);
