@@ -15,6 +15,9 @@ trust_level = "trusted"
 [projects."/home/nia/ghq/github.com/niadot"]
 trust_level = "trusted"
 
+[projects."/home/nia/ghq/github.com/niadot/wbs-input-support"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.2-codex" = "gpt-5.3-codex"
 "gpt-5.3-codex" = "gpt-5.4"
