@@ -18,6 +18,12 @@ trust_level = "trusted"
 [projects."/home/nia/ghq/github.com/niadot/wbs-input-support"]
 trust_level = "trusted"
 
+[projects."/home/nia/ghq/github.com/niadot/nixtest"]
+trust_level = "trusted"
+
+[projects."/home/nia/ghq/github.com/niadot/nuxt-learning-app"]
+trust_level = "trusted"
+
 [notice.model_migrations]
 "gpt-5.2-codex" = "gpt-5.3-codex"
 "gpt-5.3-codex" = "gpt-5.4"
