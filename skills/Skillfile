@@ -1,0 +1,5 @@
+# 常用するスキルの一覧。sks で未導入のものを導入する。
+# 形式: <owner>/<repo>@<skill-name>  1行1スキル
+
+vercel-labs/skills@find-skills
+anthropics/skills@skill-creator

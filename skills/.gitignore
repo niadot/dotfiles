@@ -1,0 +1,7 @@
+# スキル本体は追跡しない。自作スキルのみ下に列挙する（README 参照）
+*
+!.gitignore
+!Skillfile
+
+#!my-skill/
+#!my-skill/**
