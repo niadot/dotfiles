@@ -36,8 +36,13 @@ hms --dry-run          # 追加引数は home-manager にそのまま渡る
 hmu
 ```
 
-`nix flake update` で `flake.lock` を更新してから `hms` を呼ぶ。
-更新に失敗した場合は適用しない。
+リモートのupstreamを取得し、安全にfast-forwardできることを確認してから
+`nix flake update` と `hms` を実行する。成功すると `flake.lock` だけを
+`Update flake inputs (YYYY-MM-DD)` でコミットしてpushする。同日の更新コミットが
+最新ならamendし、`--force-with-lease` で安全を確認しながら差し替える。
+
+実行前からある `flake.lock` の変更も更新結果に含める。ローカルとリモートの履歴が
+分岐している場合は何も更新せず停止し、更新が無ければコミットも作らない。
 
 ### `sks` — スキルを導入
 

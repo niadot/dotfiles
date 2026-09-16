@@ -44,7 +44,7 @@ WSLではGitのSSH接続にWindows側の`ssh.exe`と1Password SSH agentを使う
 | コマンド | 用途 |
 | --- | --- |
 | `hms` | 現在のWSL用Home Manager構成を適用する。 |
-| `hmu` | flake inputsを更新してからHome Manager構成を適用する。 |
+| `hmu` | リモートと同期し、flake inputsを更新・適用して日付単位でコミット・pushする。 |
 | `nix flake check` | WSL/Linux構成とflake outputsを検証する。 |
 | `nix fmt` | Nixファイルを整形する。 |
 | `direnv` | ディレクトリ単位で環境を読み込む。Nix環境にはnix-direnvを使う。 |
