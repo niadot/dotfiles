@@ -35,7 +35,7 @@ in
       # 開発ランタイムと環境
       bun
       devenv
-      nodejs
+      nodejs_latest
       pnpm
       python3
 
