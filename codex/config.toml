@@ -1,7 +1,17 @@
-model = "gpt-5.6-sol"
+model = "gpt-6.2-sol"
 model_reasoning_effort = "high"
 [projects."/home/nia"]
 trust_level = "trusted"
 
+[projects."/home/nia/ghq/github.com/niadot/crypto-trading-system-draft"]
+trust_level = "trusted"
+
+[projects."/home/nia/ghq/github.com/niadot/dotfiles"]
+trust_level = "trusted"
+
+[tui]
+screen_reader_detection_done = true
+
 [tui.model_availability_nux]
 gpt-6-astra = 1
+"gpt-6.1-sol" = 2
